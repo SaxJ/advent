@@ -1,10 +1,10 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.33.0.
+-- This file has been generated from package.yaml by hpack version 0.34.2.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: acead5665ce745d1875bb122059d5cc4ae93ce3f912316e172e82aaf85e37bef
+-- hash: 100969f7d9222dd1263fbc0e63c13411ff4a3caa54cf5c58eb68e8287bdda83c
 
 name:           advent
 version:        0.1.0.0
@@ -86,6 +86,7 @@ library
   default-extensions: OverloadedStrings TypeApplications
   build-depends:
       base-noprelude >=4.7 && <5
+    , directory
     , relude
     , text
   default-language: Haskell2010

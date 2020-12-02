@@ -32,6 +32,7 @@ library:
   - relude
   - text
   - directory
+  - scanf
 
 executables:
   advent2020:

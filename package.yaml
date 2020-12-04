@@ -33,6 +33,9 @@ library:
   - text
   - directory
   - scanf
+  - split
+  - containers
+  - regex-tdfa
 
 executables:
   advent2020:

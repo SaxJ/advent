@@ -4,16 +4,16 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 0d0d699cd9e9c9dfb0ae03e6480ba3efc670a3865e734571071e75f374ff144a
+-- hash: ac7646f3760cf4b1763a5e928c4271b81c8a20a6a60af57550cdb5edd04360e8
 
 name:           advent
 version:        0.1.0.0
 description:    Please see the README on GitHub at <https://github.com/agentultra/advent#readme>
-homepage:       https://github.com/agentultra/advent#readme
-bug-reports:    https://github.com/agentultra/advent/issues
-author:         James King
-maintainer:     james@agentultra.com
-copyright:      2020 James King
+homepage:       https://github.com/saxj/advent#readme
+bug-reports:    https://github.com/saxj/advent/issues
+author:         Saxon Jensen
+maintainer:     saxon.jensen@gmail.com
+copyright:      2020 Saxon Jensen
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
@@ -23,7 +23,7 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/agentultra/advent
+  location: https://github.com/saxj/advent
 
 library
   exposed-modules:

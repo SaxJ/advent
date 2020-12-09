@@ -10,7 +10,7 @@ import Text.Regex.TDFA
 
 type Child = (String, Int)
 
-type Graph = Map String [(String, Int)]
+type Graph = Map String [Child]
 
 ruleLineFormat = "([0-9a-z ,]+) bags contain ([0-9a-z ,]+)." :: String
 
@@ -43,12 +43,12 @@ path graph visited (currEl@(curr, cnt) : next) total
       Just ls -> ls ++ next
       Nothing -> next
 
-countSubbags :: Graph -> String -> Int
-countSubbags graph bag = sum $ map snd $ fromMaybe [] $ (Map.!?) graph bag
+bagCount :: Graph -> String -> Int
+bagCount graph bag = sum $ map (\(b, c) -> c * (bagCount graph b)) $ (Map.!) graph bag
 
 solution :: IO ()
 solution = do
   inputLines <- readInput "src/Advent/Y2020/Day7/input"
   let graph = getChildMap inputLines
   let shinyPath = path graph ["shiny gold"] ((Map.!) graph "shiny gold")
-  print $ zip shinyPath $ map (countSubbags graph) shinyPath
+  print "hello"

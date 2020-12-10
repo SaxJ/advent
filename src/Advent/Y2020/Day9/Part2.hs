@@ -25,6 +25,7 @@ getTarget input = viaNonEmpty last $ fst $ fromJust winningSeq
     couples = zip wins (map summingCheck wins)
     winningSeq = viaNonEmpty last $ filter (\(_, b) -> not b) couples
 
+subseqs :: [a] -> [[a]]
 subseqs = filter (not . null) . concatMap inits . tails
 
 solve :: Integer -> [Integer] -> Integer

@@ -29,6 +29,7 @@ library:
   - split
   - containers
   - regex-tdfa
+  - binary
 
 executables:
   advent2020:

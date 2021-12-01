@@ -1,10 +1,10 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.34.2.
+-- This file has been generated from package.yaml by hpack version 0.34.4.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: b6acc39b1250005cc6345225c7e9ffc1e85cf7aa42dd2da50816df139bad58e7
+-- hash: 059828d23e5d63118c63995e70e2fc11a8f7ec2f27324e8fc6481cc6550371a7
 
 name:           advent
 version:        0.1.0.0
@@ -78,12 +78,64 @@ library
       Advent.Y2020.Day8.Part2
       Advent.Y2020.Day9.Part1
       Advent.Y2020.Day9.Part2
+      Advent.Y2021.Day1.Part1
+      Advent.Y2021.Day1.Part2
+      Advent.Y2021.Day10.Part1
+      Advent.Y2021.Day10.Part2
+      Advent.Y2021.Day11.Part1
+      Advent.Y2021.Day11.Part2
+      Advent.Y2021.Day12.Part1
+      Advent.Y2021.Day12.Part2
+      Advent.Y2021.Day13.Part1
+      Advent.Y2021.Day13.Part2
+      Advent.Y2021.Day14.Part1
+      Advent.Y2021.Day14.Part2
+      Advent.Y2021.Day15.Part1
+      Advent.Y2021.Day15.Part2
+      Advent.Y2021.Day16.Part1
+      Advent.Y2021.Day16.Part2
+      Advent.Y2021.Day17.Part1
+      Advent.Y2021.Day17.Part2
+      Advent.Y2021.Day18.Part1
+      Advent.Y2021.Day18.Part2
+      Advent.Y2021.Day19.Part1
+      Advent.Y2021.Day19.Part2
+      Advent.Y2021.Day2.Part1
+      Advent.Y2021.Day2.Part2
+      Advent.Y2021.Day20.Part1
+      Advent.Y2021.Day20.Part2
+      Advent.Y2021.Day21.Part1
+      Advent.Y2021.Day21.Part2
+      Advent.Y2021.Day22.Part1
+      Advent.Y2021.Day22.Part2
+      Advent.Y2021.Day23.Part1
+      Advent.Y2021.Day23.Part2
+      Advent.Y2021.Day24.Part1
+      Advent.Y2021.Day24.Part2
+      Advent.Y2021.Day25.Part1
+      Advent.Y2021.Day25.Part2
+      Advent.Y2021.Day3.Part1
+      Advent.Y2021.Day3.Part2
+      Advent.Y2021.Day4.Part1
+      Advent.Y2021.Day4.Part2
+      Advent.Y2021.Day5.Part1
+      Advent.Y2021.Day5.Part2
+      Advent.Y2021.Day6.Part1
+      Advent.Y2021.Day6.Part2
+      Advent.Y2021.Day7.Part1
+      Advent.Y2021.Day7.Part2
+      Advent.Y2021.Day8.Part1
+      Advent.Y2021.Day8.Part2
+      Advent.Y2021.Day9.Part1
+      Advent.Y2021.Day9.Part2
       Prelude
   other-modules:
       Paths_advent
   hs-source-dirs:
       src
-  default-extensions: OverloadedStrings TypeApplications
+  default-extensions:
+      OverloadedStrings
+      TypeApplications
   build-depends:
       base-noprelude >=4.7 && <5
     , binary
@@ -102,7 +154,9 @@ executable advent2020
       Paths_advent
   hs-source-dirs:
       app/Y2020/
-  default-extensions: OverloadedStrings TypeApplications
+  default-extensions:
+      OverloadedStrings
+      TypeApplications
   ghc-options: -threaded -rtsopts -with-rtsopts=-N -main-is Y2020.Main
   build-depends:
       advent
@@ -163,10 +217,62 @@ test-suite advent-test
       Advent.Y2020.Day8.Part2Spec
       Advent.Y2020.Day9.Part1Spec
       Advent.Y2020.Day9.Part2Spec
+      Advent.Y2021.Day1.Part1Spec
+      Advent.Y2021.Day1.Part2Spec
+      Advent.Y2021.Day10.Part1Spec
+      Advent.Y2021.Day10.Part2Spec
+      Advent.Y2021.Day11.Part1Spec
+      Advent.Y2021.Day11.Part2Spec
+      Advent.Y2021.Day12.Part1Spec
+      Advent.Y2021.Day12.Part2Spec
+      Advent.Y2021.Day13.Part1Spec
+      Advent.Y2021.Day13.Part2Spec
+      Advent.Y2021.Day14.Part1Spec
+      Advent.Y2021.Day14.Part2Spec
+      Advent.Y2021.Day15.Part1Spec
+      Advent.Y2021.Day15.Part2Spec
+      Advent.Y2021.Day16.Part1Spec
+      Advent.Y2021.Day16.Part2Spec
+      Advent.Y2021.Day17.Part1Spec
+      Advent.Y2021.Day17.Part2Spec
+      Advent.Y2021.Day18.Part1Spec
+      Advent.Y2021.Day18.Part2Spec
+      Advent.Y2021.Day19.Part1Spec
+      Advent.Y2021.Day19.Part2Spec
+      Advent.Y2021.Day2.Part1Spec
+      Advent.Y2021.Day2.Part2Spec
+      Advent.Y2021.Day20.Part1Spec
+      Advent.Y2021.Day20.Part2Spec
+      Advent.Y2021.Day21.Part1Spec
+      Advent.Y2021.Day21.Part2Spec
+      Advent.Y2021.Day22.Part1Spec
+      Advent.Y2021.Day22.Part2Spec
+      Advent.Y2021.Day23.Part1Spec
+      Advent.Y2021.Day23.Part2Spec
+      Advent.Y2021.Day24.Part1Spec
+      Advent.Y2021.Day24.Part2Spec
+      Advent.Y2021.Day25.Part1Spec
+      Advent.Y2021.Day25.Part2Spec
+      Advent.Y2021.Day3.Part1Spec
+      Advent.Y2021.Day3.Part2Spec
+      Advent.Y2021.Day4.Part1Spec
+      Advent.Y2021.Day4.Part2Spec
+      Advent.Y2021.Day5.Part1Spec
+      Advent.Y2021.Day5.Part2Spec
+      Advent.Y2021.Day6.Part1Spec
+      Advent.Y2021.Day6.Part2Spec
+      Advent.Y2021.Day7.Part1Spec
+      Advent.Y2021.Day7.Part2Spec
+      Advent.Y2021.Day8.Part1Spec
+      Advent.Y2021.Day8.Part2Spec
+      Advent.Y2021.Day9.Part1Spec
+      Advent.Y2021.Day9.Part2Spec
       Paths_advent
   hs-source-dirs:
       test
-  default-extensions: OverloadedStrings TypeApplications
+  default-extensions:
+      OverloadedStrings
+      TypeApplications
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       advent

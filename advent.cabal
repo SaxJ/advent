@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 059828d23e5d63118c63995e70e2fc11a8f7ec2f27324e8fc6481cc6550371a7
+-- hash: 0e5bc5508d9f94a1155533525045b551005cb3d682fcf2f8d06cd5396b6cb956
 
 name:           advent
 version:        0.1.0.0
@@ -158,6 +158,21 @@ executable advent2020
       OverloadedStrings
       TypeApplications
   ghc-options: -threaded -rtsopts -with-rtsopts=-N -main-is Y2020.Main
+  build-depends:
+      advent
+    , base-noprelude >=4.7 && <5
+  default-language: Haskell2010
+
+executable advent2021
+  main-is: Main.hs
+  other-modules:
+      Paths_advent
+  hs-source-dirs:
+      app/Y2021/
+  default-extensions:
+      OverloadedStrings
+      TypeApplications
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N -main-is Y2021.Main
   build-depends:
       advent
     , base-noprelude >=4.7 && <5

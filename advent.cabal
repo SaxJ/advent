@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 0e5bc5508d9f94a1155533525045b551005cb3d682fcf2f8d06cd5396b6cb956
+-- hash: 6699bf00f73f804213e16a8ee1db939517f4cc1f17e5d7d26a99e79a81cb8707
 
 name:           advent
 version:        0.1.0.0
@@ -137,7 +137,8 @@ library
       OverloadedStrings
       TypeApplications
   build-depends:
-      base-noprelude >=4.7 && <5
+      base
+    , base-noprelude >=4.7 && <5
     , binary
     , containers
     , directory

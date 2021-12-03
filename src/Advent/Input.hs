@@ -4,6 +4,7 @@ import Data.Either (rights)
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
 import Data.Text.Read (decimal)
+import Data.Text.Internal.Read (digitToInt)
 
 -- | Parse each line of a file into a list
 readInput ::

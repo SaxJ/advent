@@ -30,6 +30,7 @@ library:
   - containers
   - regex-tdfa
   - binary
+  - base
 
 executables:
   advent2020:

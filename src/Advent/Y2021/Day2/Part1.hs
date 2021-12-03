@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Advent.Y2021.Day2.Part1 where
-import Advent.Input
+import Advent.Input ( readInput )
 import Relude.Unsafe (read)
 
 solution :: IO ()

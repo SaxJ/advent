@@ -8,7 +8,6 @@ solution = do
   lines <- readInput "src/Advent/Y2021/Day2/input"
   print $ solve $ map toString lines
 
-
 resolveChange :: String -> (Integer, Integer)
 resolveChange cmd = let
     [dir, amountStr] = words $ toText cmd

@@ -1,5 +1,5 @@
 module Advent.Y2021.Day3.Part1 where
-import Advent.Input (readInput )
+import Advent.Input (readInput, bintodec )
 import System.Directory.Internal.Prelude ((!!), Foldable (maximum, minimum))
 import qualified Data.Map as Map
 import Relude.Unsafe (fromJust)
@@ -42,14 +42,3 @@ solve inputs =  x * y
   where
     x = bintodec $ gamma inputs
     y = bintodec $ epsilon inputs
-
-
-pwr :: (Integer, Char) -> Integer
-pwr (i, c)
-        | c == '0' = 0
-        | otherwise = 2 ^ i
-
-bintodec :: String -> Integer
-bintodec str = sum powers
-  where
-    powers = zipWith (curry pwr) [0..] (reverse str)

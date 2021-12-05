@@ -18,3 +18,11 @@ readIntegers fileName = do
   lines <- readInput fileName
   let reads = map decimal lines
   return $ map fst $ rights reads
+
+bintodec :: String -> Integer
+bintodec str = sum powers
+  where
+    powers = zipWith (curry pwr) [0..] (reverse str)
+    pwr (i, c)
+            | c == '0' = 0
+            | otherwise = 2 ^ i

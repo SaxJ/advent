@@ -7,8 +7,21 @@ import Data.Maybe (fromJust)
 import qualified Data.Matrix as M
 import Data.String (words)
 import Prelude hiding (words)
+import Data.List (elemIndex)
 
 matrixDimensions = (5, 5)
+
+falseMatrix = M.fromList 5 5 $ repeat False
+
+matrixOp :: M.Matrix Integer -> Integer -> M.Matrix Bool
+matrixOp mtx val = case idx of
+  Just i -> let
+    r = i `div` M.ncols mtx
+    c = i `mod` M.nrows mtx
+    in M.setElem True (r, c) falseMatrix
+  _ -> falseMatrix
+  where
+    idx = elemIndex val $ M.toList mtx
 
 matricesFromInput :: [String] -> [M.Matrix Integer]
 matricesFromInput = map makeMatrix . matrixChunks

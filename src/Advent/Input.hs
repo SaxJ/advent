@@ -6,6 +6,7 @@ import qualified Data.Text.IO as T
 import Data.Text.Read (decimal)
 import Data.Text.Internal.Read (digitToInt)
 import qualified Data.Map as Map
+import Relude.Unsafe (read)
 
 -- | Parse each line of a file into a list
 readInput ::

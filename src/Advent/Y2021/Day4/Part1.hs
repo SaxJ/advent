@@ -7,11 +7,19 @@ import Data.Maybe (fromJust)
 import qualified Data.Matrix as M
 import Data.String (words)
 import Prelude hiding (words)
-import Data.List (elemIndex)
+import Data.List (elemIndex, foldl)
 
 matrixDimensions = (5, 5)
 
 falseMatrix = M.fromList 5 5 $ repeat False
+
+-- Runs through commands accumulating operation matrices
+accumulateOperations :: [Integer] -> M.Matrix Integer -> [M.Matrix Bool]
+accumulateOperations cmds mtx = foldl accumulator [] cmds
+  where
+    accumulator ms cmd = ms ++ [next]
+      where
+        next = M.elementwise (||) (matrixOp mtx cmd) (fromJust $ viaNonEmpty last ms)
 
 matrixOp :: M.Matrix Integer -> Integer -> M.Matrix Bool
 matrixOp mtx val = case idx of
@@ -41,4 +49,5 @@ getInputs = filter (not . null)
 solution :: IO ()
 solution = do
   lines <- readInput "src/Advent/Y2021/Day4/input.test"
+  let inputs = getInputs $ map toString lines
   print "hello"

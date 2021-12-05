@@ -1,5 +1,5 @@
 module Advent.Y2021.Day3.Part1 where
-import Advent.Input (readInput, bintodec )
+import Advent.Input (readInput, bintodec, countOccurances )
 import System.Directory.Internal.Prelude ((!!), Foldable (maximum, minimum))
 import qualified Data.Map as Map
 import Relude.Unsafe (fromJust)
@@ -7,16 +7,11 @@ import Data.Char (digitToInt)
 
 solution :: IO ()
 solution = do
-  lines <- readInput "src/Advent/Y2021/Day3/input.test"
+  lines <- readInput "src/Advent/Y2021/Day3/input"
   print $ solve $ map toString lines
 
 atIndex :: Int -> [String] -> [Char]
 atIndex x = map (!! x)
-
-countOccurances :: [Char] -> Map Char Integer
-countOccurances = foldr accumulator Map.empty
-  where
-    accumulator x acc = Map.insertWith (+) x 1 acc
 
 maxValueKey mp = fromJust $ viaNonEmpty head $ Map.keys $ Map.filter (== m) mp
         where
@@ -25,7 +20,6 @@ maxValueKey mp = fromJust $ viaNonEmpty head $ Map.keys $ Map.filter (== m) mp
 minValueKey mp = fromJust $ viaNonEmpty head $ Map.keys $ Map.filter (== m) mp
         where
           m = minimum $ Map.elems mp
-
 
 gamma :: [String] -> String
 gamma inputs = [mostCommonAtIndex x inputs | x <- [0..11]]

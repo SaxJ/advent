@@ -5,6 +5,7 @@ import qualified Data.Text as T
 import qualified Data.Text.IO as T
 import Data.Text.Read (decimal)
 import Data.Text.Internal.Read (digitToInt)
+import qualified Data.Map as Map
 
 -- | Parse each line of a file into a list
 readInput ::
@@ -26,3 +27,9 @@ bintodec str = sum powers
     pwr (i, c)
             | c == '0' = 0
             | otherwise = 2 ^ i
+
+
+countOccurances :: (Ord a, Foldable t) => t a -> Map a Integer
+countOccurances = foldr accumulator Map.empty
+  where
+    accumulator x acc = Map.insertWith (+) x 1 acc

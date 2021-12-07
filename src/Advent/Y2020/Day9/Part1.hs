@@ -2,6 +2,7 @@ module Advent.Y2020.Day9.Part1 where
 
 import Advent.Input
 import Data.Maybe
+import Data.List (tails)
 
 windows :: Int -> [a] -> [[a]]
 windows m = foldr (zipWith (:)) (repeat []) . take m . tails
@@ -9,20 +10,18 @@ windows m = foldr (zipWith (:)) (repeat []) . take m . tails
 summingCheck :: [Integer] -> Bool
 summingCheck window = any (\(x, y) -> x + y == target) couples
   where
-    Just target = viaNonEmpty last window
+    target = last window
     couples = [(x, y) | x <- window, y <- window, x /= y]
 
 checkSeq :: [Integer] -> Bool
-checkSeq xs = case nonEmpty xs of
-  Just window -> summingCheck $ toList window
-  Nothing -> False
+checkSeq = summingCheck
 
-solve :: [Integer] -> Maybe Integer
-solve input = viaNonEmpty last $ fst $ fromJust winningSeq
+solve :: [Integer] -> Integer
+solve input = last $ fst winningSeq
   where
     wins = windows 26 input
     couples = zip wins (map summingCheck wins)
-    winningSeq = viaNonEmpty last $ filter (\(_, b) -> not b) couples
+    winningSeq = last $ filter (\(_, b) -> not b) couples
 
 solution :: IO ()
 solution = do

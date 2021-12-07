@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 658b1d6af8ed1f25f8c6e59337e46c51371d01084008e99d343caee2d6958aba
+-- hash: 6539af324fa9f0c77d0dd0c9f2a4c9196b083303fb06a645375d34ca9ea26fb1
 
 name:           advent
 version:        0.1.0.0
@@ -128,7 +128,6 @@ library
       Advent.Y2021.Day8.Part2
       Advent.Y2021.Day9.Part1
       Advent.Y2021.Day9.Part2
-      Prelude
   other-modules:
       Paths_advent
   hs-source-dirs:
@@ -138,13 +137,11 @@ library
       TypeApplications
   build-depends:
       base
-    , base-noprelude >=4.7 && <5
     , binary
     , containers
     , directory
     , matrix
     , regex-tdfa
-    , relude
     , scanf
     , split
     , text
@@ -162,7 +159,7 @@ executable advent2020
   ghc-options: -threaded -rtsopts -with-rtsopts=-N -main-is Y2020.Main
   build-depends:
       advent
-    , base-noprelude >=4.7 && <5
+    , base >=4.7 && <5
   default-language: Haskell2010
 
 executable advent2021
@@ -177,7 +174,7 @@ executable advent2021
   ghc-options: -threaded -rtsopts -with-rtsopts=-N -main-is Y2021.Main
   build-depends:
       advent
-    , base-noprelude >=4.7 && <5
+    , base >=4.7 && <5
   default-language: Haskell2010
 
 test-suite advent-test
@@ -293,6 +290,6 @@ test-suite advent-test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       advent
-    , base-noprelude >=4.7 && <5
+    , base >=4.7 && <5
     , hspec
   default-language: Haskell2010

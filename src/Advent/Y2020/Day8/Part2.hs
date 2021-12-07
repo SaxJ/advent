@@ -1,11 +1,12 @@
+{-# OPTIONS_GHC -Wno-incomplete-patterns #-}
 module Advent.Y2020.Day8.Part2 where
 
 import Advent.Input
 import qualified Data.Sequence as Seq
-import Data.Text (unpack)
-import Relude.Unsafe (read, (!!))
+import Data.Text (unpack, Text)
 import System.Directory.Internal.Prelude (Foldable (maximum))
 import Text.Regex.TDFA
+import Data.Foldable (toList)
 
 type Command = (String, Int)
 

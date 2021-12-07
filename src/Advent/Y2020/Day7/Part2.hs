@@ -3,9 +3,9 @@ module Advent.Y2020.Day7.Part2 where
 import Advent.Input (readInput)
 import Data.List.Split
 import qualified Data.Map.Strict as Map
-import Data.Text (unpack)
-import Relude.Unsafe (read)
+import Data.Text (unpack, Text)
 import Text.Regex.TDFA
+import Data.Map (Map)
 
 type Child = (String, Int)
 
@@ -34,7 +34,7 @@ getChildMap :: [Text] -> Map String [Child]
 getChildMap = Map.fromList . map (parseLine . unpack)
 
 bagCount :: Graph -> String -> Int
-bagCount graph bag = 1 + (sum $ map (\(b, c) -> c * bagCount graph b) childs)
+bagCount graph bag = 1 + sum (map (\(b, c) -> c * bagCount graph b) childs)
   where
     childs = (Map.!) graph bag
 

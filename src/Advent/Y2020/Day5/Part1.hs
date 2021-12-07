@@ -1,8 +1,9 @@
 module Advent.Y2020.Day5.Part1 where
 
 import Advent.Input (readInput)
-import Data.Text (unpack)
-import GHC.List (maximum)
+import Data.Text (unpack, Text)
+import GHC.List ()
+import Data.List (foldl')
 
 binaryPartition :: (Int, Int, Int, Int) -> Char -> (Int, Int, Int, Int)
 binaryPartition (ra, rb, ca, cb) char

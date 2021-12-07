@@ -1,8 +1,9 @@
+{-# OPTIONS_GHC -Wno-incomplete-patterns #-}
 module Advent.Y2020.Day12.Part1 where
 
 import Advent.Input
-import Data.Text (unpack)
-import Relude.Unsafe (read)
+import Data.Text (unpack, Text)
+import GHC.List (foldl')
 
 data Direction = E | S | W | N deriving (Enum)
 

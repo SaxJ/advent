@@ -3,16 +3,15 @@ module Advent.Y2021.Day3.Part2 where
 import Advent.Input (readInput, countOccurances, bintodec)
 import Advent.Y2021.Day3.Part1 (atIndex)
 import Data.List ( foldl, (!!), head, maximum, minimum )
-import Relude hiding (head)
-import Prelude hiding (head)
 import qualified Data.Map as Map
+import Data.Text (unpack)
 
 indexes = [0..11]
 
 solution :: IO ()
 solution = do
   lines <- readInput "src/Advent/Y2021/Day3/input"
-  print $ solve $ map toString lines
+  print $ solve $ map unpack lines
 
 maxValueKey mp
   | length ks > 1 = '1'

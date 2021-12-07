@@ -1,7 +1,7 @@
 module Advent.Y2020.Day10.Part1 where
 
 import Advent.Input
-import Data.List (maximum)
+import Data.List (maximum, sort)
 
 differences :: [Integer] -> [Integer]
 differences xs = case xs of

@@ -2,22 +2,22 @@ module Advent.Y2021.Day3.Part1 where
 import Advent.Input (readInput, bintodec, countOccurances )
 import System.Directory.Internal.Prelude ((!!), Foldable (maximum, minimum))
 import qualified Data.Map as Map
-import Relude.Unsafe (fromJust)
 import Data.Char (digitToInt)
+import Data.Text (unpack)
 
 solution :: IO ()
 solution = do
   lines <- readInput "src/Advent/Y2021/Day3/input"
-  print $ solve $ map toString lines
+  print $ solve $ map unpack lines
 
 atIndex :: Int -> [String] -> [Char]
 atIndex x = map (!! x)
 
-maxValueKey mp = fromJust $ viaNonEmpty head $ Map.keys $ Map.filter (== m) mp
+maxValueKey mp = head $ Map.keys $ Map.filter (== m) mp
         where
           m = maximum $ Map.elems mp
 
-minValueKey mp = fromJust $ viaNonEmpty head $ Map.keys $ Map.filter (== m) mp
+minValueKey mp = head $ Map.keys $ Map.filter (== m) mp
         where
           m = minimum $ Map.elems mp
 

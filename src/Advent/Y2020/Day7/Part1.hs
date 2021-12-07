@@ -3,9 +3,9 @@ module Advent.Y2020.Day7.Part1 where
 import Advent.Input (readInput)
 import Data.List.Split
 import qualified Data.Map.Strict as Map
-import Data.Text (unpack)
-import Relude.Unsafe (read)
+import Data.Text (unpack, Text)
 import Text.Regex.TDFA
+import Data.Map (Map)
 
 type Child = (String, Int)
 
@@ -33,7 +33,7 @@ getChildMap = Map.fromList . map (parseLine . unpack)
 
 search :: String -> Map String [Child] -> String -> Bool
 search _ _ "shiny gold" = False
-search lookingFor graph start = (length $ filter (== lookingFor) $ path graph [start] (map fst $ (Map.!) graph start)) > 0
+search lookingFor graph start = lookingFor `elem` path graph [start] (map fst $ (Map.!) graph start)
   where
     path _ visited [] = reverse visited
     path graph visited (curr : next)

@@ -1,21 +1,21 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Advent.Y2021.Day2.Part2 where
 import Advent.Input
-import Relude.Unsafe (read)
 import System.Directory.Internal.Prelude (foldl)
+import Data.Text (unpack)
 
 solution :: IO ()
 solution = do
   lines <- readInput "src/Advent/Y2021/Day2/input"
-  print $ solve $ map toString lines
+  print $ solve $ map unpack lines
 
 
 resolveCmd :: String -> (String, Integer)
 resolveCmd cmd = let
-    [dir, amountStr] = words $ toText cmd
-    amount = read $ toString amountStr
+    [dir, amountStr] = words  cmd
+    amount = read  amountStr
     in
-       (toString dir, amount)
+       (dir, amount)
 
 accumulator :: (String, Integer) -> (Integer, Integer, Integer) -> (Integer, Integer, Integer)
 accumulator (cmd, x) (pa, px, py)

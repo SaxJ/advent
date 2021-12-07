@@ -1,12 +1,13 @@
 module Advent.Input where
 
 import Data.Either (rights)
-import qualified Data.Text as T
+import qualified Data.Text as T hiding (foldr, reverse, zipWith, map)
 import qualified Data.Text.IO as T
 import Data.Text.Read (decimal)
 import Data.Text.Internal.Read (digitToInt)
 import qualified Data.Map as Map
-import Relude.Unsafe (read)
+import Data.Text hiding (foldr, reverse, zipWith, map)
+import Data.Map (Map)
 
 -- | Parse each line of a file into a list
 readInput ::

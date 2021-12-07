@@ -1,11 +1,11 @@
+{-# OPTIONS_GHC -Wno-incomplete-patterns #-}
 module Advent.Y2020.Day4.Part2 where
 
 import Advent.Input (readInput)
 import Data.List.Split
 import Data.Set (Set)
 import qualified Data.Set as Set
-import Data.Text (unpack)
-import Relude.Unsafe
+import Data.Text (unpack, Text)
 import Text.Read
 import Text.Regex.TDFA
 import Text.Scanf
@@ -26,7 +26,7 @@ parseField field = (key, val)
     [key, val] = splitOn ":" field
 
 parseLine :: Text -> [Field]
-parseLine = map (parseField . unpack) . words
+parseLine = map parseField . words . unpack
 
 fields :: Paragraph -> [Field]
 fields = concatMap parseLine

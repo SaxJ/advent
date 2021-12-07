@@ -1,6 +1,6 @@
 module Advent.Y2021.Day1.Part2 where
 import Advent.Input (readIntegers)
-import Text.Regex.TDFA.CorePattern (P(Seq))
+import Data.List (tails)
 
 solution :: IO ()
 solution = do

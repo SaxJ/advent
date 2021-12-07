@@ -2,12 +2,13 @@
 module Advent.Y2021.Day4.Part1 where
 import Advent.Input (readInput )
 import Data.List.Split (splitOn, chunksOf)
-import Relude.Unsafe (read)
-import Data.Maybe (fromJust)
+import Data.Maybe (fromJust, fromMaybe)
 import qualified Data.Matrix as M
 import Data.String (words)
 import Prelude hiding (words)
 import Data.List (elemIndex, foldl)
+import Debug.Trace
+import Data.Text (unpack)
 
 matrixDimensions = (5, 5)
 
@@ -19,7 +20,7 @@ accumulateOperations cmds mtx = foldl accumulator [falseMatrix] cmds
   where
     accumulator ms cmd = ms ++ [next]
       where
-        next = M.elementwise (||) (matrixOp mtx cmd) (fromJust $ viaNonEmpty last ms)
+        next = M.elementwise (||) (matrixOp mtx cmd) (last ms)
 
 matrixOp :: M.Matrix Integer -> Integer -> M.Matrix Bool
 matrixOp mtx val = case midx of
@@ -38,17 +39,17 @@ makeMatrix :: [String] -> M.Matrix Integer
 makeMatrix = M.fromList 5 5 . map read . concatMap words
 
 matrixChunks :: [String] -> [[String]]
-matrixChunks = chunksOf 5 . fromJust . viaNonEmpty tail
+matrixChunks = chunksOf 5 . tail
 
 readCommands :: [String] -> [Integer]
-readCommands = map read . splitOn "," . fromJust . viaNonEmpty head
+readCommands = map read . splitOn "," . head
 
 getInputs :: [String] -> [String]
 getInputs = filter (not . null)
 
 solve lines = map (accumulateOperations cmds) matrices
   where
-    inputs = getInputs $ map toString lines
+    inputs = getInputs lines
     cmds = readCommands inputs
     matrices = matricesFromInput inputs
 
@@ -56,4 +57,4 @@ solve lines = map (accumulateOperations cmds) matrices
 solution :: IO ()
 solution = do
   lines <- readInput "src/Advent/Y2021/Day4/input.test"
-  print $ solve lines
+  print $ solve $ map unpack lines

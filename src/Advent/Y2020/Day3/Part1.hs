@@ -2,7 +2,6 @@ module Advent.Y2020.Day3.Part1 where
 
 import Advent.Input (readInput)
 import Data.Text (unpack)
-import Relude.Unsafe
 
 solve :: [String] -> Int
 solve = length . hits . positions

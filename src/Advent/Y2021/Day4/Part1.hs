@@ -22,12 +22,15 @@ accumulateOperations cmds mtx = foldl accumulator [falseMatrix] cmds
       where
         next = M.elementwise (||) (matrixOp mtx cmd) (last ms)
 
+
+indexToCoord :: M.Matrix Integer -> Int -> (Int, Int)
+indexToCoord m i = ((i `div` M.ncols m) + 1, (i `mod` M.nrows m) + 1)
+
 matrixOp :: M.Matrix Integer -> Integer -> M.Matrix Bool
 matrixOp mtx val = case midx of
   Just i -> let
-    r = i `div` M.ncols mtx
-    c = i `mod` M.nrows mtx
-    in trace (show (i, r, c)) fromMaybe falseMatrix $ M.safeSet True (r, c) falseMatrix
+    (r, c) = indexToCoord mtx i
+    in M.setElem True (r, c) falseMatrix
   _ -> falseMatrix
   where
     midx = elemIndex val $ M.toList mtx

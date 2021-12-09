@@ -24,7 +24,7 @@ accumulateOperations cmds mtx = foldl accumulator [falseMatrix] cmds
 
 
 indexToCoord :: M.Matrix Integer -> Int -> (Int, Int)
-indexToCoord m i = ((i `div` M.ncols m) + 1, (i `mod` M.nrows m) + 1)
+indexToCoord m i = (i `div` M.ncols m + 1, i `mod` M.nrows m + 1)
 
 matrixOp :: M.Matrix Integer -> Integer -> M.Matrix Bool
 matrixOp mtx val = case midx of
@@ -49,6 +49,13 @@ readCommands = map read . splitOn "," . head
 
 getInputs :: [String] -> [String]
 getInputs = filter (not . null)
+
+checkMatrix :: M.Matrix Bool -> Bool
+checkMatrix m = any and lists
+  where
+    rows = map (`M.getRow` m) [1..5]
+    cols = map (`M.getCol` m) [1..5]
+    lists = rows ++ cols
 
 solve lines = map (accumulateOperations cmds) matrices
   where

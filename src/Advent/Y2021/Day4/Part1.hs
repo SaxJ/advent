@@ -6,9 +6,10 @@ import Data.Maybe (fromJust, fromMaybe)
 import qualified Data.Matrix as M
 import Data.String (words)
 import Prelude hiding (words)
-import Data.List (elemIndex, foldl)
+import Data.List (elemIndex, foldl, findIndex, minimumBy)
 import Debug.Trace
 import Data.Text (unpack)
+import Data.Function (on)
 
 matrixDimensions = (5, 5)
 
@@ -57,14 +58,28 @@ checkMatrix m = any and lists
     cols = map (`M.getCol` m) [1..5]
     lists = rows ++ cols
 
-solve lines = map (accumulateOperations cmds) matrices
+findSuccess :: [M.Matrix Bool] -> (Int, [M.Matrix Bool])
+findSuccess ms = (idx, solved)
+  where
+    idx = fromMaybe 1000 $ findIndex checkMatrix ms
+    solved = dropWhile (not . checkMatrix) ms
+
+matrixScore :: M.Matrix Integer -> M.Matrix Bool -> Integer
+matrixScore m bm = sum $ map fst $ filter (not . snd) zipped
+  where
+    zipped = zip (M.toList m) (M.toList bm)
+
+solve lines = matrixScore (matrices !! i) (head solved) * (cmds !! (idx - 1))
   where
     inputs = getInputs lines
     cmds = readCommands inputs
     matrices = matricesFromInput inputs
+    solveSteps = map (accumulateOperations cmds) matrices
+    zs = zip [0..] $ map findSuccess solveSteps
+    finalResult@(i, (idx, solved)) = minimumBy (compare `on` (fst.snd)) zs
 
 
 solution :: IO ()
 solution = do
-  lines <- readInput "src/Advent/Y2021/Day4/input.test"
+  lines <- readInput "src/Advent/Y2021/Day4/input"
   print $ solve $ map unpack lines

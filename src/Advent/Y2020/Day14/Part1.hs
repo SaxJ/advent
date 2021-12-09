@@ -1,11 +1,13 @@
+{-# OPTIONS_GHC -Wno-incomplete-patterns #-}
 module Advent.Y2020.Day14.Part1 where
 
 import Advent.Input
 import Data.Char (intToDigit)
 import qualified Data.Map as Map
-import Data.Text (pack, unpack)
-import Relude.Unsafe (read)
+import Data.Text (pack, unpack, Text)
 import Text.Regex.TDFA
+import Data.Map (Map)
+import Data.List (foldl')
 
 type Rule = (Integer, Text)
 
@@ -59,7 +61,7 @@ applyMask mask num = pack $ zipWith result (unpack mask) (unpack num)
       _ -> m
 
 runProgram :: [Cmd] -> (Text, Map Integer Integer)
-runProgram rules = foldl' fun ("", Map.empty) rules
+runProgram = foldl' fun ("", Map.empty)
   where
     fun (mask, accMap) cmd = case cmd of
       Mask m -> (m, accMap)

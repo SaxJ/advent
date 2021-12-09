@@ -1,7 +1,7 @@
 module Advent.Y2020.Day2.Part1 where
 
 import Advent.Input
-import Data.Text (unpack)
+import Data.Text (unpack, Text)
 import Text.Scanf
 
 ruleFormat = fmt_ (int . "-" % int . " " % char . ": " % string)
@@ -12,7 +12,7 @@ parseRule rule = (min, max, ch, str)
     Just (min :+ max :+ ch :+ str :+ ()) = scanf ruleFormat rule
 
 count :: Char -> String -> Int
-count c cs = foldr (\x acc -> if x == c then acc + 1 else acc) 0 cs
+count c = foldr (\x acc -> if x == c then acc + 1 else acc) 0
 
 checkRule :: (Int, Int, Char, String) -> Bool
 checkRule (min, max, char, str) = cnt <= max && cnt >= min
@@ -20,7 +20,7 @@ checkRule (min, max, char, str) = cnt <= max && cnt >= min
     cnt = count char str
 
 solve :: [Text] -> Int
-solve = length . (filter checkRule) . (map (parseRule . unpack))
+solve = length . filter checkRule . map (parseRule . unpack)
 
 solution :: IO ()
 solution = do

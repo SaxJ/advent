@@ -5,8 +5,8 @@ module Advent.Y2020.Day13.Part2 where
 import Advent.Input
 import Data.List (minimumBy)
 import Data.List.Split
-import Data.Text (unpack)
-import Relude.Unsafe (fromJust, read)
+import Data.Text (unpack, Text)
+import Data.Maybe
 
 busTimes :: Integer -> [Integer]
 busTimes x = [0, x ..]

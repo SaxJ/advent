@@ -1,17 +1,17 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Advent.Y2021.Day2.Part1 where
 import Advent.Input ( readInput )
-import Relude.Unsafe (read)
+import Data.Text (unpack)
 
 solution :: IO ()
 solution = do
   lines <- readInput "src/Advent/Y2021/Day2/input"
-  print $ solve $ map toString lines
+  print $ solve $ map unpack lines
 
 resolveChange :: String -> (Integer, Integer)
 resolveChange cmd = let
-    [dir, amountStr] = words $ toText cmd
-    amount = read $ toString amountStr
+    [dir, amountStr] = words  cmd
+    amount = read amountStr
     in
         case (dir, amount) of
             ("forward", x) -> (x, 0)

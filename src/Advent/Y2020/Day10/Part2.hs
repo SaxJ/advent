@@ -1,8 +1,9 @@
 module Advent.Y2020.Day10.Part2 where
 
 import Advent.Input
-import Data.List (maximum)
+import Data.List (maximum, tails, sort)
 import qualified Data.Set as Set
+import Data.Set (Set)
 
 windows :: Int -> [a] -> [[a]]
 windows m = foldr (zipWith (:)) (repeat []) . take m . tails

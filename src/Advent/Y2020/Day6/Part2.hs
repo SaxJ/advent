@@ -3,7 +3,8 @@ module Advent.Y2020.Day6.Part2 where
 import Advent.Input (readInput)
 import Data.List.Split
 import qualified Data.Set as Set
-import Data.Text (unpack)
+import Data.Text (unpack, Text)
+import Data.Set (Set)
 
 type Paragraph = [Text]
 

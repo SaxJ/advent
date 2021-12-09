@@ -2,8 +2,7 @@ module Advent.Y2020.Day2.Part2 where
 
 import Advent.Input
 import Advent.Y2020.Day2.Part1 (parseRule)
-import Data.Text (unpack)
-import Relude.Unsafe ((!!))
+import Data.Text (unpack, Text)
 
 checkRule :: (Int, Int, Char, String) -> Bool
 checkRule (p1, p2, char, str) = con1 || con2
@@ -14,7 +13,7 @@ checkRule (p1, p2, char, str) = con1 || con2
     con2 = x /= char && y == char
 
 solve :: [Text] -> Int
-solve = length . (filter checkRule) . (map (parseRule . unpack))
+solve = length . filter checkRule . map (parseRule . unpack)
 
 solution :: IO ()
 solution = do

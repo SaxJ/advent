@@ -1,10 +1,12 @@
+{-# OPTIONS_GHC -Wno-incomplete-patterns #-}
 module Advent.Y2020.Day11.Part2 where
 
 import Advent.Input
 import Data.List (foldl, (!!))
 import qualified Data.Map.Strict as Map
 import Data.Maybe (fromJust, isJust, isNothing)
-import Data.Text (unpack)
+import Data.Text (unpack, Text)
+import Data.Map (Map)
 
 type Grid = Map (Int, Int) Char
 
@@ -31,7 +33,7 @@ makeMap :: [Text] -> Grid
 makeMap lines = Map.fromList $ concatMap transform lineNums
   where
     lineNums = zip [0 ..] lines
-    transform (n, ln) = map (\(cn, c) -> ((cn, n), c)) $ zip [0 ..] $ unpack ln
+    transform (n, ln) = zipWith (\ cn c -> ((cn, n), c)) [0 ..] (unpack ln)
 
 neighbours :: (Int, Int) -> [(Int, Int)]
 neighbours (x, y) = [(x -1, y), (x + 1, y), (x, y + 1), (x, y -1), (x + 1, y + 1), (x -1, y + 1), (x -1, y -1), (x + 1, y -1)]

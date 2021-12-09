@@ -6,12 +6,11 @@ challenge.
 Each year builds a new `advent<year>` executable that outputs the
 solutions to each puzzle on `stdout`.
 
-## Building ##
+## Building
 
-I use [stack](https://docs.haskellstack.org/en/stable/README/) as the
-build tool.
+I use [stack](https://docs.haskellstack.org/en/stable/README/) as the build tool.
 
-### Starting a New Challenge ###
+### Starting a New Challenge
 
 I wrote a script to generate all of the code needed to setup a
 challenge for a new year:
@@ -21,7 +20,7 @@ challenge for a new year:
 Replace `year=<your-year-here>` to generate the code for a new
 challenge.
 
-## Structure ##
+## Structure
 
 The library is structured so that each solution is its own module, eg:
 

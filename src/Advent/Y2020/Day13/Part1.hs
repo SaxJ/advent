@@ -1,12 +1,12 @@
 module Advent.Y2020.Day13.Part1 where
 
 import Advent.Input
-import Data.List (minimumBy)
+import Data.List (minimumBy, find)
 import Data.List.Split
 import qualified Data.Map.Strict as Map
 import Data.Maybe
-import Data.Text (unpack)
-import Relude.Unsafe (read)
+import Data.Text (unpack, Text)
+import Data.Map (Map)
 
 busTimes :: Integer -> [Integer]
 busTimes x = [0, x ..]
@@ -23,7 +23,7 @@ split' :: Text -> [String]
 split' = splitOn "," . unpack
 
 sequenceMap :: [Maybe Integer] -> Map Integer [Integer]
-sequenceMap maybes = Map.fromList $ zip ls $ map busTimes $ ls
+sequenceMap maybes = Map.fromList $ zip ls $ map busTimes ls
   where
     ls = catMaybes maybes
 

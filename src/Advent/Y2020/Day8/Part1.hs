@@ -1,9 +1,9 @@
+{-# OPTIONS_GHC -Wno-incomplete-patterns #-}
 module Advent.Y2020.Day8.Part1 where
 
 import Advent.Input
 import Data.Bool (bool)
-import Data.Text (unpack)
-import Relude.Unsafe (read, (!!))
+import Data.Text (unpack, Text)
 import Text.Regex.TDFA
 
 type Command = (String, Int)

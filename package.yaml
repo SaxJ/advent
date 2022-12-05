@@ -31,6 +31,8 @@ library:
   - binary
   - base
   - matrix
+  - intervals
+  - safe
 
 executables:
   advent2020:

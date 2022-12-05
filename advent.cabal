@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: e4948941033007db6714c9e03b25af194739f282c4d1381e0164d6c4acb8590b
+-- hash: 6a264c0d9296f1164507fc8ff8d8e718d206dbee1ed87843566d035365aa5669
 
 name:           advent
 version:        0.1.0.0
@@ -190,8 +190,10 @@ library
     , binary
     , containers
     , directory
+    , intervals
     , matrix
     , regex-tdfa
+    , safe
     , scanf
     , split
     , text

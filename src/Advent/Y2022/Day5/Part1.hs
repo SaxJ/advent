@@ -28,7 +28,7 @@ getColumn lines c = filter isAlpha col
         mCol = map (`atMay` c) lines
         col = map (fromMaybe ' ') mCol
 
-parseStacks :: [String] -> [[Char]]
+parseStacks :: [String] -> Stacks
 parseStacks lines = map (getColumn lines) indexes
     where
         indexes = boxIndexes $ last lines
@@ -38,7 +38,7 @@ runCommand stacks (num, from, to) = nextStack
     where
         mapper (idx, stack)
             | idx == from = drop num stack
-            | idx == to = reverse (take num (stacks !! (num - 1))) ++ stack
+            | idx == to = reverse (take num (stacks !! (from - 1))) ++ stack
             | otherwise = stack
         nextStack = zipWith (curry mapper) [1..] stacks
 
@@ -50,5 +50,14 @@ parseCommand line = (read a, read b, read c)
         b = parts !! 3
         c = parts !! 5
 
+runCommands :: [String] -> Stacks
+runCommands lines = Prelude.foldl runCommand initialStack commands
+    where
+        (stackStrings, commandStrings) = sections lines
+        initialStack = parseStacks stackStrings
+        commands = map parseCommand commandStrings
+
 solve :: [String] -> String
-solve lines = "hello"
+solve lines = map head stacks
+    where
+        stacks = runCommands lines
